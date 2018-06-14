@@ -56,7 +56,8 @@ function initLogs() {
   logs = [];
   for (var i = 0; i < 300; i++) {
     logs.push({
-      x: Math.ceil((dimW / 2 - logWidth / 2 + Math.random() * logWidth) * 2) / 2,
+      x:
+        Math.ceil((dimW / 2 - logWidth / 2 + Math.random() * logWidth) * 2) / 2,
       y: dimH - Math.ceil(Math.random() * 4)
     });
   }
@@ -64,7 +65,13 @@ function initLogs() {
 
 function initFlame(reset) {
   var y = Math.ceil(Math.random() * dimH),
-    x = Math.ceil((dimW / 2 - settings.fireWidth / 2 + Math.random() * settings.fireWidth) * 2) / 2,
+    x =
+      Math.ceil(
+        (dimW / 2 -
+          settings.fireWidth / 2 +
+          Math.random() * settings.fireWidth) *
+          2
+      ) / 2,
     colorStart = settings.innerFlameStartColor,
     colorStop = settings.innerFlameEndColor;
 
@@ -72,8 +79,12 @@ function initFlame(reset) {
     y = dimH;
   }
 
-  if (x <= dimW / 2 - settings.fireWidth / 6 || x >= dimW / 2 + settings.fireWidth / 6) {
-    (colorStart = settings.outerFlameStartColor), (colorStop = settings.outerFlameEndColor);
+  if (
+    x <= dimW / 2 - settings.fireWidth / 6 ||
+    x >= dimW / 2 + settings.fireWidth / 6
+  ) {
+    (colorStart = settings.outerFlameStartColor),
+      (colorStop = settings.outerFlameEndColor);
   }
 
   return {
@@ -112,7 +123,8 @@ function render() {
     var color = colorChange(flame.colorStart, flame.colorStop, dimH, flame.y);
     color.a = flame.lifeTime * curStep;
 
-    ctx.fillStyle = "rgba(" + color.r + "," + color.g + "," + color.b + "," + color.a + ")";
+    ctx.fillStyle =
+      "rgba(" + color.r + "," + color.g + "," + color.b + "," + color.a + ")";
 
     drawTriangle(flame.x, y);
   }
